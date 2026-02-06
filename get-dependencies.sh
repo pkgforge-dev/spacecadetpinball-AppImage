@@ -72,6 +72,7 @@ cd Space_Cadet
 # Install resources
 mv -v PINBALL.DAT *.MID Sounds/*.WAV /usr/lib/spacecadetpinball
 # Install documentation
+ls
 mv -v PINBALL.DOC TABLE.BMP /usr/share/doc/spacecadetpinball
 cd ..
 
