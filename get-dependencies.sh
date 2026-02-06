@@ -70,6 +70,9 @@ END
 # Install original game files
 cd Space_Cadet
 mv -v PINBALL.DAT *.MID Sounds/*.WAV /usr/lib/spacecadetpinball
+# Install documentation
+#mkdir -p /usr/share/doc/spacecadetpinball
+#mv -v PINBALL.DOC TABLE.BMP /usr/share/doc/spacecadetpinball
 cd ..
 # Install full tilt game files
 mv -v FullTilt/CADET/CADET.DAT "/usr/lib/spacecadetpinball"
