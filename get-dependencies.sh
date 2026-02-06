@@ -43,7 +43,7 @@ cmake .. \
 make -j$(nproc)
 cd ..
 
-mkdir -p /usr/lib/spacecadetpinball
+mkdir -p /usr/lib/spacecadetpinball/SOUND
 # Move binary
 mv -v bin/SpaceCadetPinball /usr/lib/spacecadetpinball/SpaceCadetPinball
 # Install wrapper script
