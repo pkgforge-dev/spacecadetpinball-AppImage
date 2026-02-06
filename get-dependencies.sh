@@ -77,11 +77,9 @@ mv -v PINBALL.DOC TABLE.BMP /usr/share/doc/spacecadetpinball
 cd ..
 
 # Install full tilt game files
-cd "FullTilt/CADET"
-mv -v CADET.DAT "/usr/lib/spacecadetpinball"
-mv -v SOUND/* "/usr/lib/spacecadetpinball/SOUND"
-cd ..
-ls
+mv -v FullTilt/CADET/CADET.DAT "/usr/lib/spacecadetpinball"
+mv -v FullTilt/CADET/SOUND/* "/usr/lib/spacecadetpinball/SOUND"
+
 # Install icon
 cp -rv SpaceCadetPinball/Icon_128x128.png /usr/lib/spacecadetpinball/SpaceCadetPinball.png
 # Install desktop launcher
