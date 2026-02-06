@@ -46,7 +46,7 @@ cd ..
 
 mkdir -p /usr/lib/spacecadetpinball
 # Install binary
-mv -v "bin/SpaceCadetPinball" "/usr/lib/spacecadetpinball/SpaceCadetPinball"
+mv -v bin/SpaceCadetPinball /usr/lib/spacecadetpinball/SpaceCadetPinball
 # Install wrapper script
 install -Dm0755 /dev/stdin "/usr/bin/SpaceCadetPinball" <<END
 #!/bin/sh
@@ -71,9 +71,9 @@ END
 # Install original game files
 cd Space_Cadet
 # Install resources
-mv -v PINBALL.DAT *.MID Sounds/*.WAV "/usr/lib/spacecadetpinball"
+mv -v PINBALL.DAT *.MID Sounds/*.WAV /usr/lib/spacecadetpinball
 # Install documentation
-mv -v PINBALL.DOC TABLE.BMP "/usr/share/doc/spacecadetpinball"
+mv -v PINBALL.DOC TABLE.BMP /usr/share/doc/spacecadetpinball
 cd ..
 
 # Install full tilt game files
@@ -81,8 +81,8 @@ cd "FullTilt/CADET"
 mv -v CADET.DAT "/usr/lib/spacecadetpinball"
 mv -v SOUND/* "/usr/lib/spacecadetpinball/SOUND"
 cd ..
-
+ls
 # Install icon
-cp -rv "SpaceCadetPinball/Icon_128x128.png" "/usr/lib/spacecadetpinball/SpaceCadetPinball.png"
+cp -rv SpaceCadetPinball/Icon_128x128.png /usr/lib/spacecadetpinball/SpaceCadetPinball.png
 # Install desktop launcher
-cp -rv SpaceCadetPinball/Platform/Linux/SpaceCadetPinball.desktop "/usr/share/applications"
+cp -rv SpaceCadetPinball/Platform/Linux/SpaceCadetPinball.desktop /usr/share/applications
