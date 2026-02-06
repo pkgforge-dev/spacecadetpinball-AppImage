@@ -83,4 +83,4 @@ mv -v FullTilt/CADET/SOUND/* "/usr/lib/spacecadetpinball/SOUND"
 # Install icon
 cp -rv SpaceCadetPinball/Icon_128x128.png /usr/lib/spacecadetpinball/SpaceCadetPinball.png
 # Install desktop launcher
-cp -rv SpaceCadetPinball/Platform/Linux/SpaceCadetPinball.desktop /usr/share/applications
+cp -rv Platform/Linux/SpaceCadetPinball.desktop /usr/share/applications
