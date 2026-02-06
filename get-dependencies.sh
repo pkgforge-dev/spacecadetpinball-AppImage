@@ -21,7 +21,7 @@ get-debloated-pkgs --add-common --prefer-nano
 #make-aur-package
 
 # If the application needs to be manually built that has to be done down here
-echo "Making nightly build of spacecadetpinball..."
+echo "Making nightly build of SpaceCadetPinball..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/k4zmu2a/SpaceCadetPinball"
 VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
