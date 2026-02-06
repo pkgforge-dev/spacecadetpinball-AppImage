@@ -35,7 +35,6 @@ wget https://archive.org/download/win311_ftiltpball/FULLTILT.ZIP
 7z x -y Space_Cadet.rar -oSpace_Cadet/
 7z x -y 'FULLTILT.ZIP' -oFullTilt/ "CADET/CADET.DAT" "CADET/SOUND/*"
 
-#LDFLAGS="$LDFLAGS -DNDEBUG" CXXFLAGS="$CXXFLAGS -DNDEBUG" cmake -B "$pkgname/build" -S "$pkgname" \
 mkdir -p build && cd build
 cmake .. \
     -Wno-dev \
