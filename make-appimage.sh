@@ -3,12 +3,13 @@
 set -eu
 
 ARCH=$(uname -m)
-export ARCH
+VERSION=$(pacman -Q spacecadetpinball-git | awk '{print $2; exit}') # example command to get version of application here
+export ARCH VERSION
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.bg.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON=/usr/lib/spacecadetpinball/SpaceCadetPinball.png
-export DESKTOP=/usr/share/applications/SpaceCadetPinball.desktop
+export ICON=https://raw.githubusercontent.com/k4zmu2a/SpaceCadetPinball/refs/heads/master/SpaceCadetPinball/Icon_128x128.png
+export DESKTOP=/usr/share/applications/spacecadetpinball.desktop
 export DEPLOY_OPENGL=1
 
 # Deploy dependencies
