@@ -28,22 +28,25 @@ VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
 git clone "$REPO" ./spacecadetpinball
 echo "$VERSION" > ~/version
 
+cd ./spacecadetpinball
+
 wget https://archive.org/download/SpaceCadet_Plus95/Space_Cadet.rar
 wget https://archive.org/download/win311_ftiltpball/FULLTILT.ZIP
-
 7z x -y Space_Cadet.rar -oSpace_Cadet/
 7z x -y 'FULLTILT.ZIP' -oFullTilt/ "CADET/CADET.DAT" "CADET/SOUND/*"
 
-cd ./spacecadetpinball
+#LDFLAGS="$LDFLAGS -DNDEBUG" CXXFLAGS="$CXXFLAGS -DNDEBUG" cmake -B "$pkgname/build" -S "$pkgname" \
+mkdir -p build && cd build
+cmake .. \
+    -Wno-dev \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
+make -j$(nproc)
+cd ..
 
-LDFLAGS="$LDFLAGS -DNDEBUG" CXXFLAGS="$CXXFLAGS -DNDEBUG" cmake -B "$pkgname/build" -S "$pkgname" \
-      -Wno-dev \
-      -DCMAKE_BUILD_TYPE=None \
-      -DCMAKE_INSTALL_PREFIX=/usr
-make -C "$pkgname/build"
-
+mkdir -p /usr/lib/spacecadetpinball
 # Install binary
-install -Dm0755 "$pkgname/bin/SpaceCadetPinball" "/usr/lib/spacecadetpinball/SpaceCadetPinball"
+mv -v "bin/SpaceCadetPinball" "/usr/lib/spacecadetpinball/SpaceCadetPinball"
 # Install wrapper script
 install -Dm0755 /dev/stdin "/usr/bin/SpaceCadetPinball" <<END
 #!/bin/sh
@@ -68,18 +71,18 @@ END
 # Install original game files
 cd Space_Cadet
 # Install resources
-install -m0644 PINBALL.DAT *.MID Sounds/*.WAV -t "/usr/lib/spacecadetpinball"
+mv -v PINBALL.DAT *.MID Sounds/*.WAV "/usr/lib/spacecadetpinball"
 # Install documentation
-install -Dm0644 PINBALL.DOC TABLE.BMP -t "/usr/share/doc/spacecadetpinball"
+mv -v PINBALL.DOC TABLE.BMP "/usr/share/doc/spacecadetpinball"
 cd ..
 
 # Install full tilt game files
 cd "FullTilt/CADET"
-install -m0644 CADET.DAT -t "/usr/lib/spacecadetpinball"
-install -Dm0644 SOUND/* -t "/usr/lib/spacecadetpinball/SOUND"
-cd "$srcdir"
+mv -v CADET.DAT "/usr/lib/spacecadetpinball"
+mv -v SOUND/* "/usr/lib/spacecadetpinball/SOUND"
+cd ..
 
 # Install icon
-install -Dm0644 "spacecadetpinball/SpaceCadetPinball/Icon_128x128.png" "/usr/lib/spacecadetpinball/SpaceCadetPinball.png"
+cp -rv "SpaceCadetPinball/Icon_128x128.png" "/usr/lib/spacecadetpinball/SpaceCadetPinball.png"
 # Install desktop launcher
-install -Dm644 spacecadetpinball/SpaceCadetPinball/Platform/Linux/SpaceCadetPinball.desktop -t "/usr/share/applications"
+cp -rv SpaceCadetPinball/Platform/Linux/SpaceCadetPinball.desktop "/usr/share/applications"
