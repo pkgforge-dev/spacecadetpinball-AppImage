@@ -79,6 +79,8 @@ cd ..
 # Install full tilt game files
 mv -v FullTilt/CADET/CADET.DAT "/usr/lib/spacecadetpinball"
 mv -v FullTilt/CADET/SOUND/* "/usr/lib/spacecadetpinball/SOUND"
+ls
+cd ..
 
 # Install icon
 cp -rv SpaceCadetPinball/Icon_128x128.png /usr/lib/spacecadetpinball/SpaceCadetPinball.png
