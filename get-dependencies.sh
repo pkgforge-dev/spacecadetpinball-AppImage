@@ -18,6 +18,8 @@ get-debloated-pkgs --add-common --prefer-nano libdecor-mini
 # If the application needs to be manually built that has to be done down here
 echo "Building SpaceCadetPinball..."
 echo "---------------------------------------------------------------"
+mkdir -p /tmp/FullTilt /tmp/Space_Cadet ./AppDir/bin/SOUND
+
 echo "Downloading game data..."
 wget --retry-connrefused --tries=30 \
 	'https://archive.org/download/SpaceCadet_Plus95/Space_Cadet.rar' -O /tmp/Space_Cadet.rar
@@ -28,11 +30,8 @@ echo "Verifying checksums..."
 echo "3cc5dfd914c2ac41b03f006c7ccbb59d6f9e4c32ecfd1906e718c8e47f130f4a  /tmp/Space_Cadet.rar" | sha256sum -c
 echo "183a2219865b3f2199403928b817b7c967837ea6298de14fb8a379944c7b4599  /tmp/FULLTILT.ZIP" | sha256sum -c
 
-unrar x -y /tmp/Space_Cadet.rar /tmp
-mkdir -p /tmp/FullTilt
+unrar x -y /tmp/Space_Cadet.rar /tmp/Space_Cadet
 unzip -o /tmp/FULLTILT.ZIP "CADET/CADET.DAT" "CADET/SOUND/*" -d /tmp/FullTilt
-
-mkdir -p ./AppDir/bin/SOUND
 
 cp -v /tmp/Space_Cadet/PINBALL.DAT   ./AppDir/bin
 cp -v /tmp/FullTilt/CADET/CADET.DAT  ./AppDir/bin
