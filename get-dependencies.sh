@@ -49,7 +49,7 @@ git clone https://github.com/k4zmu2a/SpaceCadetPinball.git ./SpaceCadetPinball &
 		git fetch --tags origin
 		TAG=$(git tag --sort=-v:refname | grep -vi 'rc\|alpha\|beta' | head -1)
 		git checkout "$TAG"
-		echo "$TAG" > ~/version
+		echo "${TAG#*_}" > ~/version
 	fi
 
 	cmake -B ./build -Wno-dev -DCMAKE_BUILD_TYPE=Release
