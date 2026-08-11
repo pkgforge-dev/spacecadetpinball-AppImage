@@ -35,9 +35,9 @@ unzip -o /tmp/FULLTILT.ZIP "CADET/CADET.DAT" "CADET/SOUND/*" -d /tmp/FullTilt
 
 cp -v /tmp/Space_Cadet/PINBALL.DAT   ./AppDir/bin
 cp -v /tmp/FullTilt/CADET/CADET.DAT  ./AppDir/bin
-cp -v /tmp/FullTilt/CADET/SOUND/*    ./AppDir/bin
-cp -v /tmp/Space_Cadet/*.MID         ./AppDir/bin
-cp -v /tmp/Space_Cadet/Sounds/*.WAV  ./AppDir/bin
+cp -v /tmp/FullTilt/CADET/SOUND/*    ./AppDir/bin/SOUND
+cp -v /tmp/Space_Cadet/*.MID         ./AppDir/bin/SOUND
+cp -v /tmp/Space_Cadet/Sounds/*.WAV  ./AppDir/bin/SOUND
 
 git clone https://github.com/k4zmu2a/SpaceCadetPinball.git ./SpaceCadetPinball && (
 	cd ./SpaceCadetPinball
